@@ -33,19 +33,8 @@ rows = soup.select('table.mzr-table tbody tr')[1:9]
 
 # Пройтись по каждой строке и извлечь данные
 for row in rows:
-    # Попробовать извлечь текст из ячейки с классом "mzr-tc-chemical-level-1"
     nutrient_cell = row.select_one('td')
-    
-    # Проверить, что ячейка найдена
     if nutrient_cell:
         nutrient = nutrient_cell.get_text(strip=True)
-        
-        # Извлечь текст из ячеек со span itemprop или текстовых ячеек
-        amount_cells = row.select('[itemprop], :not([itemprop])')
-        amounts = [cell.get_text(strip=True) for cell in amount_cells if cell.text.strip()]
-        
-        # Вывести результат
-        try:
-            print(f'{nutrient}: {amounts[1]}')
-        except:
-            pass
+        amounts = row.select('td')[1].get_text(strip=True)
+        print(f'{nutrient}: {amounts}')
