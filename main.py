@@ -25,7 +25,7 @@ headers = {
     'sec-ch-ua-platform': '"Windows"',
 }
 
-response = requests.get('https://health-diet.ru/base_of_food/sostav/16017.php', cookies=cookies, headers=headers)
+response = requests.get('https://health-diet.ru/base_of_food/sostav/16017.phpD', cookies=cookies, headers=headers)
 soup = BeautifulSoup(response.text, 'html.parser')
 
 # Найти все строки в таблице
